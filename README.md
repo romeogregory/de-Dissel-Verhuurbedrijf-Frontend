@@ -1,4 +1,4 @@
-# dedissel
+# de-dissel-verhuurbedrijf-frontend
 
 ## Project setup
 ```
