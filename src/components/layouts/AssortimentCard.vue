@@ -16,7 +16,7 @@
       src="https://meerbeek.nl/caravans/wp-content/uploads/Adria-caravan-Adora-2020-01.jpg"
     ></v-img>
 
-    <v-card-title>Caravan1</v-card-title>
+    <v-card-title>Caravan</v-card-title>
 
     <v-card-text>
       <v-row

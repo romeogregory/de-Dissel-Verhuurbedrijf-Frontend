@@ -2,17 +2,26 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="white" 
       dark
     >
-      <div class="d-flex align-center">
-        <h1>De Dissel</h1>
-      </div>
+      <router-link to="/" row>
+        <v-img
+          class="mx-2"
+          src="../src/assets/logo.png"
+          max-height="40"
+          max-width="40"
+          contain
+        ></v-img>
+        
+        <!-- <v-toolbar-title class="ml-2" style="color:black;">de Dissel</v-toolbar-title> -->
+      </router-link>
 
       <v-spacer></v-spacer>
 
-      <v-btn>
-          <router-link to="/login">Login</router-link>
+      <v-btn color="primary">
+          <v-icon left>mdi-account</v-icon>
+          <router-link to="/login" style="color: white;">Account</router-link>
       </v-btn>
 
     </v-app-bar>
