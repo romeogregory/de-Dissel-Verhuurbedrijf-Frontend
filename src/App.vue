@@ -19,11 +19,9 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn color="primary">
-          <v-icon left>mdi-account</v-icon>
-          <router-link to="/login" style="color: white;">Account</router-link>
-      </v-btn>
-
+      <router-link to="/login" style="color: white;">
+          <v-btn color="primary">Account<v-icon right>mdi-account</v-icon></v-btn>
+      </router-link>
     </v-app-bar>
 
     <v-main>

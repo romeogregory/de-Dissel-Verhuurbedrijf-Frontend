@@ -2,9 +2,11 @@
   <v-container>
     <h1>Home - De Dissel</h1>
 
-    <v-btn>
-          <router-link to="/assortiment">Assortiment</router-link>
-    </v-btn>
+    <router-link to="/assortiment">
+        <v-btn>
+            Bekijk ons assortiment
+        </v-btn>
+    </router-link>
   </v-container>
 </template>
 
