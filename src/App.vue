@@ -11,12 +11,10 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        href="/login"
-        text
-      >
-        <span class="mr-2">Login</span>
+      <v-btn>
+          <router-link to="/login">Login</router-link>
       </v-btn>
+
     </v-app-bar>
 
     <v-main>
