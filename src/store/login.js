@@ -23,19 +23,17 @@ export default new Vuex.Store({
 
   actions: {
     getToken({commit}, credentials) {
-        console.log(credentials.email);
-        console.log(credentials.password);
+        console.log('in getToken');
 
         let parms = {
-            email: credentials.email,
-            password: credentials.password
+            clientEmail: credentials.clientEmail,
+            clientPassword: credentials.clientPassword
         }
         
         return new Promise((resolve, reject) => {
-            axios.post('http://127.0.0.1:80/api/v1/login', parms)
+            axios.post('http://127.0.0.1:80/api/v1/login/', parms)
             .then(response => {
                 commit('SET_TOKEN', response.data.token);
-                console.log(response.data.token);
                 resolve();
             }).catch(err => {
                 reject(err);
