@@ -34,6 +34,30 @@ export default new Vuex.Store({
   },
 
   actions: {
+    register(context, credentials) {
+        let parms = {
+            firstname: credentials.firstname,
+            lastname: credentials.lastname,
+            insertion: credentials.insertion,
+            mobile: credentials.mobile,
+            driving_license_category: credentials.driving_license_category,
+            drivers_license_number: credentials.drivers_license_number,
+            username: credentials.username,
+            email: credentials.email,
+            password: credentials.password,
+            password_confirmation: credentials.password_confirmation,
+        }
+
+        return new Promise((resolve, reject) => {
+            axios.post('http://127.0.0.1:80/api/v1/register', parms)
+            .then(response => {
+                resolve(response);
+            }).catch(err => {
+                reject(err);
+            })
+        })
+    },
+
     destroyToken(context) {
         if(context.getters.loggedIn) {
             return new Promise((resolve, reject) => {

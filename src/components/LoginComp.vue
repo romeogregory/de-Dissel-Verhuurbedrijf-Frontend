@@ -54,7 +54,7 @@
         this.$store.dispatch('getToken', this.credentials, {
             //Nothing...
         }).then(response => {
-            this.$router.push({ name: '/assortiment' });
+            this.$router.push({ path: '/assortiment' });
             console.warn(response);
         });
       }
