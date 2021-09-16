@@ -1,15 +1,15 @@
 <template>
-  <assortiment-comp/>
+    <assortiment-comp/>
 </template>
 
 <script>
-  import AssortimentComp from '../components/AssortimentComp'
+import AssortimentComp from '../components/AssortimentComp'
 
-  export default {
+export default {
     name: 'Login',
 
     components: {
-      AssortimentComp,
+        AssortimentComp,
     },
-  }
+}
 </script>

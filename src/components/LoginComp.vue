@@ -52,7 +52,12 @@
     methods: {
       login() {
         // console.log(this.credentials);
-        this.$store.dispatch('getToken', this.credentials);
+        this.$store.dispatch('getToken', this.credentials, {
+            //Nothing...
+        }).then(response => {
+          this.$router.push({ name: '/assortiment' });
+          console.warn(response);
+        });
       }
     }
   }

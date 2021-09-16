@@ -6,23 +6,48 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-        token: null,
+        token: localStorage.getItem('token') || null,
   },
 
   getters: {
     token(state) {
         return state.token;
+    },
+
+    loggedIn(state) {
+        return state.token !== null;
     }
   },
 
   mutations: {
     SET_TOKEN(state, token) {
         state.token = token;
+    },
+
+    retrieveToken(state, token){
+        state.token = token;
     }
   },
 
   actions: {
-    getToken({commit}, credentials) {
+    destroyToken(context) {
+        if(context.getters.loggedIn) {
+            return new Promise((resolve, reject) => {
+                axios.post('http://127.0.0.1:80/api/v1/logout')
+                .then(response => {
+                    localStorage.removeItem('token');
+                    context.commit('destroyToken');
+                    resolve(response);
+                }).catch(err => {
+                    localStorage.removeItem('token');
+                    context.commit('destroyToken');
+                    reject(err);
+                })
+            })
+        }
+    },
+
+    getToken(context,credentials) {
         console.log(credentials.email);
         console.log(credentials.password);
 
@@ -34,9 +59,9 @@ export default new Vuex.Store({
         return new Promise((resolve, reject) => {
             axios.post('http://127.0.0.1:80/api/v1/login', parms)
             .then(response => {
-                commit('SET_TOKEN', response.data.token);
-                console.log(response.data.token);
-                resolve();
+                localStorage.setItem('token', response.data.token);
+                context.commit('retrieveToken', response.data.token);
+                resolve(response);
             }).catch(err => {
                 reject(err);
             })

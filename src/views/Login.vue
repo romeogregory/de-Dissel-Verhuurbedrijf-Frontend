@@ -1,15 +1,15 @@
 <template>
-  <login-comp/>
+    <login-comp/>
 </template>
 
 <script>
-  import LoginComp from '../components/LoginComp'
+import LoginComp from '../components/LoginComp'
 
-  export default {
+export default {
     name: 'Login',
 
     components: {
-      LoginComp,
+        LoginComp,
     },
-  }
+}
 </script>
