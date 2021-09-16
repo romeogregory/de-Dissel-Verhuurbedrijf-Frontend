@@ -51,7 +51,7 @@
 
     methods: {
       login() {
-        this.$store.dispatch('getToken', this.credentials, {
+        this.$store.dispatch('login', this.credentials, {
             //Nothing...
         }).then(response => {
             this.$router.push({ path: '/assortiment' });

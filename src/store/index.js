@@ -75,7 +75,7 @@ export default new Vuex.Store({
         }
     },
 
-    getToken(context,credentials) {
+    login(context,credentials) {
         let parms = {
             email: credentials.email,
             password: credentials.password
