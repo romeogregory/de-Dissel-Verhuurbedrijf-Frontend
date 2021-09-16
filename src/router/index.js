@@ -16,13 +16,24 @@ const routes = [
     {
         path: '/assortiment',
         name: 'Assortiment',
-        component: Assortiment
+        component: Assortiment,
+        // meta: {
+        //     requiresAuth: true,
+        // }
     },
     {
         path: '/login',
         name: 'Login',
-        component: Login
+        component: Login,
+        meta: {
+            requiresVisitor: true,
+        }
     },
+    // {
+    //     path: '/register',
+    //     name: 'Register',
+    //     component: Register,
+    // },
     {
         path: '/logout',
         name: 'Logout',

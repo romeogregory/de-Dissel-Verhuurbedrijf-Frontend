@@ -26,6 +26,10 @@ export default new Vuex.Store({
 
     retrieveToken(state, token){
         state.token = token;
+    },
+
+    destroyToken(state) {
+        state.token = null;
     }
   },
 
@@ -33,7 +37,7 @@ export default new Vuex.Store({
     destroyToken(context) {
         if(context.getters.loggedIn) {
             return new Promise((resolve, reject) => {
-                axios.post('http://127.0.0.1:80/api/v1/logout') //Check
+                axios.post('http://127.0.0.1:80/api/v1/logout', )
                 .then(response => {
                     localStorage.removeItem('token');
                     context.commit('destroyToken');
@@ -48,9 +52,6 @@ export default new Vuex.Store({
     },
 
     getToken(context,credentials) {
-        console.log(credentials.email);
-        console.log(credentials.password);
-
         let parms = {
             email: credentials.email,
             password: credentials.password
@@ -59,8 +60,8 @@ export default new Vuex.Store({
         return new Promise((resolve, reject) => {
             axios.post('http://127.0.0.1:80/api/v1/login', parms)
             .then(response => {
-                localStorage.setItem('token', response.data.token);
-                context.commit('retrieveToken', response.data.token);
+                localStorage.setItem('token', response.data.data.token);
+                context.commit('retrieveToken', response.data.data.token);
                 resolve(response);
             }).catch(err => {
                 reject(err);
