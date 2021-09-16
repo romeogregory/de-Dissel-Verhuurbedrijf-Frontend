@@ -15,22 +15,20 @@
                 </v-layout>
             </v-container>
         </v-content>
-        
+
     </v-container>
 </template>
 
 <script>
 import AssortimentCard from '../components/layouts/AssortimentCard.vue'
 
-  export default {
+export default {
     name: 'AssortimentComp',
 
-    data: () => ({
-      
-    }),
+    data: () => ({}),
 
     components: {
         AssortimentCard,
     }
-  }
+}
 </script>
