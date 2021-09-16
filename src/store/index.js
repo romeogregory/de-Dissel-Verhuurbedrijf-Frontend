@@ -33,7 +33,7 @@ export default new Vuex.Store({
     destroyToken(context) {
         if(context.getters.loggedIn) {
             return new Promise((resolve, reject) => {
-                axios.post('http://127.0.0.1:80/api/v1/logout')
+                axios.post('http://127.0.0.1:80/api/v1/logout') //Check
                 .then(response => {
                     localStorage.removeItem('token');
                     context.commit('destroyToken');

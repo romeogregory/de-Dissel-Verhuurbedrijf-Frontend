@@ -6,7 +6,7 @@
 import LogoutComp from '../components/LogoutComp'
 
 export default {
-    name: 'LogoutComp',
+    name: 'Logout',
 
     components: {
         LogoutComp,

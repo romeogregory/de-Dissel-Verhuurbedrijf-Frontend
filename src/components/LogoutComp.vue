@@ -1,16 +1,18 @@
 <template>
-    <div>
-        <h1>Logout</h1>
-    </div>
+    <div></div>
 </template>
+
 
 <script>
 export default {
-    name: 'LoginComp',
+    name: 'LogoutComp',
 
-    data() {
-        return {}
-    },
-
+    created() {
+        this.$store.dispatch('destroyToken')
+            .then(response => {
+                this.$router.push({ name: '/home' });
+                console.warn(response);
+            });
+    }
 }
 </script>
