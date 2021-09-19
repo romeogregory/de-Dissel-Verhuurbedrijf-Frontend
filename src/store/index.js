@@ -24,11 +24,11 @@ export default new Vuex.Store({
         state.token = token;
     },
 
-    retrieveToken(state, token){
+    RETRIEVE_TOKEN(state, token){
         state.token = token;
     },
 
-    destroyToken(state) {
+    CLEAR_AUTH_USER(state) {
         state.token = null;
     }
   },
@@ -59,17 +59,21 @@ export default new Vuex.Store({
     },
 
     destroyToken(context) {
+        const AUTH_TOKEN = localStorage.getItem('token');
+
+        // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+
         if(context.getters.loggedIn) {
             return new Promise((resolve, reject) => {
-                axios.post('http://127.0.0.1:80/api/v1/logout', )
+                axios.post("http://127.0.0.1:80/api/v1/logout", [], 
+                {headers: { 'Authorization' : 'Bearer '+ AUTH_TOKEN}})
                 .then(response => {
                     localStorage.removeItem('token');
-                    context.commit('destroyToken');
+                    context.commit('CLEAR_AUTH_USER');
                     resolve(response);
                 }).catch(err => {
-                    localStorage.removeItem('token');
-                    context.commit('destroyToken');
-                    reject(err);
+                    console.error('error!');
+                    reject(err)
                 })
             })
         }
@@ -80,12 +84,12 @@ export default new Vuex.Store({
             email: credentials.email,
             password: credentials.password
         }
-        
+
         return new Promise((resolve, reject) => {
             axios.post('http://127.0.0.1:80/api/v1/login', parms)
             .then(response => {
                 localStorage.setItem('token', response.data.data.token);
-                context.commit('retrieveToken', response.data.data.token);
+                context.commit('RETRIEVE_TOKEN', response.data.data.token);
                 resolve(response);
             }).catch(err => {
                 reject(err);
