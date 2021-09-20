@@ -61,8 +61,6 @@ export default new Vuex.Store({
     destroyToken(context) {
         const AUTH_TOKEN = localStorage.getItem('token');
 
-        // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-
         if(context.getters.loggedIn) {
             return new Promise((resolve, reject) => {
                 axios.post("http://127.0.0.1:80/api/v1/logout", [], 
